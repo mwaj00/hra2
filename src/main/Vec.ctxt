@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=nazev\ prenositelnost
+comment0.target=Vec(java.lang.String,\ boolean)
+comment0.text=\r\n\ Konstuktor\ t\u0159\u00EDdy\r\n
+comment1.params=
+comment1.target=java.lang.String\ getNazev()
+comment1.text=\r\n\ Metoda\ vrac\u00ED\ n\u00E1zev\ v\u011Bci\r\n
+comment2.params=vec
+comment2.target=Vec\ vlozVec(Vec)
+comment2.text=\r\n\ Metoda\ vlo\u017E\u00ED\ v\u011Bc\ do\ batohu.\r\n
+comment3.params=nazev
+comment3.target=boolean\ obsahujeVec(java.lang.String)
+comment3.text=\r\n\ Metoda\ rozhodne,\ zda\ v\ batohu\ v\u011Bc\ je.\r\n
+comment4.params=
+comment4.target=java.lang.String\ odebranaVec()
+comment5.params=
+comment5.target=boolean\ jePrenositelna()
+numComments=6

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=plan
+comment0.target=PrikazJez(HerniPlan)
+comment0.text=\r\n\ \ Konstruktor\ t\u0159\u00EDdy\r\n\ \ \r\n\ @param\ plan\ hern\u00ED\ pl\u00E1n,\ ve\ kter\u00E9m\ se\ bude\ ve\ h\u0159e\ "jez"\ \r\n
+comment1.params=parametry
+comment1.target=java.lang.String\ proved(java.lang.String[])
+comment1.text=\r\n\ Prov\u00E1d\u00ED\ p\u0159\u00EDkaz\ jez.\ Zkou\u0161\u00ED\ sn\u00EDst\ v\u011Bci,\ kter\u00E9\ jsou\ u\u017E\ vlo\u017Een\u00E9\ v\ batohu.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getNazev()
+comment2.text=\r\n\ \ Metoda\ vrac\u00ED\ n\u00E1zev\ p\u0159\u00EDkazu\ (slovo\ kter\u00E9\ pou\u017E\u00EDv\u00E1\ hr\u00E1\u010D\ pro\ jeho\ vyvol\u00E1n\u00ED)\r\n\ \ \r\n\ \ @\ return\ nazev\ prikazu\r\n
+comment3.params=
+comment3.target=java.lang.String\ jahody()
+comment3.text=\r\n\ Metoda\ zaji\u0161\u0165uje,\ \u017Ee\ v\u011Bc\ (jahody)\ lze\ sn\u00EDst\ pouze\ pokud\ je\ ji\u017E\ v\ batohu;\ "nastav\u00ED",\ \u017Ee\ sestra\ se\ u\u017E\ najedla.\r\n
+comment4.params=
+comment4.target=java.lang.String\ chleba()
+comment4.text=\r\n\ Metoda\ zaji\u0161\u0165uje,\ \u017Ee\ v\u011Bc\ (chleba)\ lze\ sn\u00EDst\ pouze\ pokud\ je\ ji\u017E\ v\ batohu;\ "nastav\u00ED",\ \u017Ee\ sestra\ se\ u\u017E\ najedla..\r\n
+comment5.params=
+comment5.target=java.lang.String\ jablko()
+comment5.text=\r\n\ Metoda\ zaji\u0161\u0165uje,\ \u017Ee\ v\u011Bc\ (jablko)\ lze\ sn\u00EDst\ pouze\ pokud\ je\ ji\u017E\ v\ batohu;\ "nastav\u00ED",\ \u017Ee\ sestra\ se\ u\u017E\ najedla..\r\n
+comment6.params=
+comment6.target=java.lang.String\ boruvky()
+comment6.text=\r\n\ Metoda\ zaji\u0161\u0165uje,\ \u017Ee\ v\u011Bc\ (bor\u016Fvky)\ lze\ sn\u00EDst\ pouze\ pokud\ je\ ji\u017E\ v\ batohu.\r\n\ Pokud\ je\ sn\u011Bzeneno\ otr\u00E1ven\u00E9\ j\u00EDdlo,\ mus\u00ED\ se\ sn\u00EDst\ bor\u016Fvky.\ Jde\ ji\ v\u0161ak\ sn\u00EDzt\ i\ v\ p\u0159\u00EDpad\u011B,\ \u017Ee\ nebylo\ po\u017Eito\ jablko.\r\n
+numComments=7
