@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=nazev
+comment0.target=boolean\ obsahujeVec(java.lang.String)
+comment1.params=vec
+comment1.target=Vec\ vlozVec(Vec)
+comment2.params=nazev
+comment2.target=Vec\ odeberVec(java.lang.String)
+comment3.params=vec
+comment3.target=Vec\ odeberVec(Vec)
+comment4.params=vec
+comment4.target=Vec\ odebranaVec(Vec)
+comment5.params=vec
+comment5.target=Vec\ snezVec(Vec)
+numComments=6
