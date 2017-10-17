@@ -22,4 +22,5 @@ public class Start
             rozhrani.hrajZeSouboru(args[0]);
         }
     }
+    
 }
