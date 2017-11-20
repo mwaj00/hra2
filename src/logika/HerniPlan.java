@@ -1,4 +1,10 @@
 package logika;
+
+import java.util.ArrayList;
+import java.util.List;
+import utils.Observer;
+import utils.Subject;
+
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -10,7 +16,7 @@ package logika;
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  *@version    pro školní rok 2015/2016
  */
-public class HerniPlan {
+public class HerniPlan implements Subject {
     private Prostor aktualniProstor;
     private Prostor viteznyProstor;
     private Prostor prohravaciProstor;
@@ -18,6 +24,8 @@ public class HerniPlan {
     private int pokus; //číslo pokusu
     private boolean isOtraveny; // zda je jídlo otrávené
     private boolean jedla; // zda princezna něco jedla
+    
+    private List<Observer> listObserveru = new ArrayList<>();
     
     /**
      *  Konstruktor, který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -28,6 +36,8 @@ public class HerniPlan {
         batoh = new Batoh();
         pokus = 0;
         isOtraveny = false;
+        
+        listObserveru = new ArrayList<>();
     }
     
     /**
@@ -37,24 +47,24 @@ public class HerniPlan {
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
      
-        Prostor okrajLesa = new Prostor("okraj_lesa","Tady jsi mela piknik a je to pro tebe zacatecni bod. Mas tri moznosti, kam se vydat");
+        Prostor okrajLesa = new Prostor("okraj lesa","Tady jsi mela piknik a je to pro tebe zacatecni bod. Mas tri moznosti, kam se vydat",1,1 );
         Prostor kukuricnePole = new Prostor("kukuricne pole", "V dali vidis strasidelny dum. Muzes jit pres\n"
-            + "hustym porostem kukuricce a jit k ni, anebo se vratit zpet na okraj lesa");
+            + "hustym porostem kukuricce a jit k ni, anebo se vratit zpet na okraj lesa", 20, 50);
         Prostor les = new Prostor("les","Cesta te vede tim dal tim vic do hlubin lesa a zacinas mit strach.\n"
-            + "Dal muzes jit po jejich hrbetu do udoli, nebo se vratit na okraj lesa");
+            + "Dal muzes jit po jejich hrbetu do udoli, nebo se vratit na okraj lesa",50,30);
         Prostor taboriste = new Prostor("taboriste","Vsimnes si stare pani, ktera povida: \"Pres taboriste cesta neni,\n"
             + "vrat se na okraj lesa.\" Muze si vsak lhat, proto se musis rozhodnout,\n"
-            + "zda ji poslechnes, nebo ne");
-        Prostor udoli = new Prostor("udoli","Nasla jsi ker plny boruvky. Muzes je sebrat a vlozit do batohu");
-        Prostor strasidelnyDum = new Prostor ("strasidelny_dum", "Jsi vycerpana a mas hlad, posilni se!\n"
+            + "zda ji poslechnes, nebo ne",80,150);
+        Prostor udoli = new Prostor("udoli","Nasla jsi ker plny boruvky. Muzes je sebrat a vlozit do batohu",75,20);
+        Prostor strasidelnyDum = new Prostor ("strasidelny dum", "Jsi vycerpana a mas hlad, posilni se!\n"
             +  "Na stole vidis jidlo: jablko, jahody a chleba. Nejdriv jidlo musis vlozit\n"
-            +  " do batohu, pak ho muzes snist");
+            +  " do batohu, pak ho muzes snist",10,90);
         Prostor jezero= new Prostor ("jezero", "Vysla jsi z strasidelneho domu a pred tebou je jezero. Musis ji preplavat.\n"
-            + "Hrozi, ze te silny proud vody strhne a utopis se. Risknes to?"); 
+            + "Hrozi, ze te silny proud vody strhne a utopis se. Risknes to?",45,80); 
         Prostor hriste = new Prostor("hriste", "Preplaval jsi jezero. Jsi u detskeho hristi.\n"
             + "Nikdo tam neni krome jednoho bezdomovce. Usmeje se na tebe a rekne ti 'Asi hledas sveho brachu, reknu ti kde, jestli vyresis moji hadanku'.\n"
             + "Polozi ti otazku, na niz je jen jedna spravna odpoved. Odpovis-li spravne,\n"
-            + " rekne ti kde je tvuj bratr. Pokud ne, hra skonci. Mas tri pokusy. Otazka zni: 'Patří ti to, ale tvoji přátelé to používají víc než ty. Co je to'");
+            + " rekne ti kde je tvuj bratr. Pokud ne, hra skonci. Mas tri pokusy. Otazka zni: 'Patří ti to, ale tvoji přátelé to používají víc než ty. Co je to'",250,15);
              
         prohravaciProstor = strasidelnyDum;
         prohravaciProstor = hriste;
@@ -163,6 +173,23 @@ public class HerniPlan {
      */
     public Batoh getBatoh() {
         return batoh;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        listObserveru.add(observer);
+    }
+
+    @Override
+    public void deleteObserver(Observer observer) {
+        listObserveru.remove(observer);
+    }
+
+    @Override
+    public void notifyAllObservers() {
+        for (Observer listObserveruItem : listObserveru) {
+            listObserveruItem.update();
+        }
     }
     
 }

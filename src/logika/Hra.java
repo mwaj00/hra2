@@ -1,4 +1,11 @@
 package logika;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import utils.Observer;
+import utils.Subject;
+
 /**
  *  Třída Hra - třída představující logiku adventury.
  * 
@@ -12,6 +19,7 @@ package logika;
  */
 
 public class Hra implements IHra {
+    
     private SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
     private HerniPlan herniPlan;
     private boolean konecHry = false;
@@ -37,7 +45,7 @@ public class Hra implements IHra {
      */
     public String vratUvitani() {
         return "Vitej!\n" +
-        "Dnes jsi 16 leta puberťáčka. Jsou letní prázdniny a jako brigádu máš na starost hlídání svého 6 letého bratra.\n" +
+        "Dnes budeš 16 leta puberťáčka. Jsou letní prázdniny a jako brigádu máš na starost hlídání svého 6 letého bratra.\n" +
         "Jednoho dne jsi se rozhodla, že půjdete na oběd na piknik do lesa \n" +
         "a pak, jakmile jsi dojedla, tak na místě jsi usla. Až se probudíš vidíš, že se pomalu začiná stmívat a uvědomíš si, že nevidíš svého brátra.\n" +
         "Tvým úkolem je ho najít předtím než bude úplně tma jinak bude doma velký malér.\n"+
@@ -105,6 +113,8 @@ public class Hra implements IHra {
     public HerniPlan getHerniPlan(){
         return herniPlan;
     }
+
+    
 
 }
 
