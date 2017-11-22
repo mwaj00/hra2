@@ -21,7 +21,8 @@ import utils.ObserverNovaHra;
 public class Mapa extends AnchorPane implements Observer{
 
     private IHra hra;
-    private Circle tecka;
+//    private Circle tecka;
+    private ImageView tecka;
     
     public Mapa(IHra hra){
         this.hra = hra;
@@ -30,8 +31,9 @@ public class Mapa extends AnchorPane implements Observer{
     }
     
     private void init(){
-        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/prostredy.png"),300,300,false,false));
-        tecka = new Circle(10, Paint.valueOf("red"));
+        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),605,805,false,false));
+//        tecka = new Circle(10, Paint.valueOf("red"));
+        tecka = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/postava.png"),50,50,false,false));
         this.getChildren().addAll(obrazek, tecka);
         update();
     }

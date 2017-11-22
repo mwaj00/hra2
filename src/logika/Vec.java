@@ -14,14 +14,16 @@ public class Vec
 {
     private String nazev;
     private boolean prenositelnost;
+    private String url;
     private Map<String, Vec> veci; //klíč a k němu přiřazená hodnota
     /***************************************************************************
      * Konstuktor třídy
      */
-    public Vec(String nazev, boolean prenositelnost)
+    public Vec(String nazev, boolean prenositelnost, String url)
     {
         this.nazev = nazev;
         this.prenositelnost = prenositelnost;
+        this.url = url;
         veci = new HashMap<>(); //vytvořená nová mapa, do které se vkládají předměty
     }
 
@@ -54,5 +56,19 @@ public class Vec
     
     public boolean jePrenositelna(){
         return prenositelnost;
+    }
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
