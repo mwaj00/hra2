@@ -207,6 +207,21 @@ public class Prostor {
     public Vec odeberVec(Vec vec) {
         return null;
     }
+    
+    public String seznamVychoduProPanely() 
+    {
+        String vracenyText = "vychody:";
+        for (Prostor sousedni : vychody) {
+             vracenyText += " " + sousedni.getNazev();
+        }
+        return vracenyText;
+    }
+    
+    public Map<String,Vec> getVeci()
+     {
+         return this.veci;
+     }
+    
 
     /**
      * Metoda vrací hodnotu odpovídající zadanému klíči.

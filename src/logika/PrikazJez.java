@@ -1,4 +1,8 @@
 package logika;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 /**
  *  Třída PrikazSnez implementuje pro hru příkaz jez.
  *  Tato třída je součástí jednoduché textové hry.
@@ -10,6 +14,7 @@ public class PrikazJez implements IPrikaz
 {
     private static final String NAZEV = "jez";
     private HerniPlan plan;   
+    private MediaPlayer mediaPlayer;
     
     /**
      *  Konstruktor třídy
@@ -29,6 +34,10 @@ public class PrikazJez implements IPrikaz
             // pokud chybí druhé slovo (sousední prostor), tak ..
             return "Co mam snist?";
         }
+
+        Media sound = new Media(this.getClass().getResource("/zdroje/jist.mp3").toString());
+        
+        mediaPlayer = new MediaPlayer(sound);
 
         if(parametry.length == 1) {
             switch (parametry[0]) {
@@ -59,6 +68,8 @@ public class PrikazJez implements IPrikaz
         if(plan.getBatoh().obsahujeVec("jahody")){
             plan.getBatoh().odeberVec("jahody");
             plan.setJedla(true); 
+            plan.notifyAllObservers();
+            mediaPlayer.play();
             return "Posilnila ses jahodama.";
         }
         return "Nemas jahody.";
@@ -71,6 +82,8 @@ public class PrikazJez implements IPrikaz
         if(plan.getBatoh().obsahujeVec("chleba")){
             plan.getBatoh().odeberVec("chleba");
             plan.setJedla(true);
+            plan.notifyAllObservers();
+            mediaPlayer.play();
             return "Posilnila ses chlebem.";
         }
         return "Nemas chleba.";
@@ -84,6 +97,8 @@ public class PrikazJez implements IPrikaz
             plan.setOtraveny(true);
             plan.getBatoh().odeberVec("jablko");
             plan.setJedla(true);
+            plan.notifyAllObservers();
+            mediaPlayer.play();
             return "Posilnila ses jablkem, ale bylo otravene. Zemres, pokud nesnis boruvky.";
         }
         return "Nemas jablko.";
@@ -94,12 +109,18 @@ public class PrikazJez implements IPrikaz
      * Pokud je snězeneno otrávené jídlo, musí se sníst borůvky. Jde ji však snízt i v případě, že nebylo požito jablko.
      */
     public String boruvky(){
-        if(plan.getBatoh().obsahujeVec("boruvky")){
+        if(plan.getBatoh().obsahujeVec("boruvky"))
+        {
             if(plan.isOtraveny()){
                 plan.getBatoh().odeberVec("boruvky");
                 plan.setOtraveny(false);
+                plan.notifyAllObservers();
+                mediaPlayer.play();
                 return "Boruvky te zachranila.";
             }
+            plan.getBatoh().odeberVec("boruvky");
+            plan.notifyAllObservers();
+            mediaPlayer.play();
             return "Posilnila ses boruvkama.";
         }
         return "Nemas boruvky.";

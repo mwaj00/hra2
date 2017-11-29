@@ -16,12 +16,12 @@ import utils.Observer;
 import utils.ObserverNovaHra;
 /**
  *
- * @author Julietta
+ * @author Julietta Mwansová
  */
 public class Mapa extends AnchorPane implements Observer{
 
     private IHra hra;
-//    private Circle tecka;
+    //private Circle tecka;
     private ImageView tecka;
     
     public Mapa(IHra hra){
@@ -31,12 +31,16 @@ public class Mapa extends AnchorPane implements Observer{
     }
     
     private void init(){
-        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),605,805,false,false));
-//        tecka = new Circle(10, Paint.valueOf("red"));
+        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),500,400,false,false));
+       //tecka = new Circle(10, Paint.valueOf("red"));
         tecka = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/postava.png"),50,50,false,false));
         this.getChildren().addAll(obrazek, tecka);
         update();
     }
+    
+    /**
+     * metoda pro aktulizaci panelu.
+     */
     
     @Override
     public void update() {
@@ -44,14 +48,6 @@ public class Mapa extends AnchorPane implements Observer{
         this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosX());
     }
 
-    @Override
-    public void novaHra(IHra hra) {
-        hra.getHerniPlan().deleteObserver(this);
-        this.hra = hra;
-        hra.getHerniPlan().registerObserver(this);
-        update();
-        
-    }
     
     
     

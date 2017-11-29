@@ -7,6 +7,9 @@ package main;
 
 import UI.Mapa;
 import UI.MenuPole;
+import UI.PanelBatohu;
+import UI.PanelVeci;
+import UI.Vychody;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -58,8 +61,6 @@ public class Main extends Application {
         centerText.setEditable(false);
         borderPane.setCenter(centerText);
 
-        
-
         Label zadejPrikazLabel = new Label("Zadej prikaz");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
 
@@ -84,32 +85,54 @@ public class Main extends Application {
             }
         });
 
-                 
+        Label lBatoh = new Label("Batoh");
+        lBatoh.setFont(Font.font("Arial", FontWeight.BOLD, 16));      
+        
+        Label lVychod = new Label("Východy");
+        lVychod.setFont(Font.font("Arial", FontWeight.BOLD, 16));         
+        
+        Label lVeci = new Label("Věci v místnosti");
+        lVeci.setFont(Font.font("Arial", FontWeight.BOLD, 16));         
                 
         FlowPane dolniPanel = new FlowPane();
         dolniPanel.setAlignment(Pos.CENTER);
         dolniPanel.getChildren().addAll(zadejPrikazLabel, zadejPrikazTextField);
         
         
-      /*  //obrazek s mapou
-        FlowPane obrazekPane = new FlowPane();
-        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/prostredy.png"),400,420,false,false));
-           
-        obrazekPane.getChildren().add(obrazek);*/
+        BorderPane levy = new BorderPane();
+        
+        FlowPane l1 = new FlowPane();
+        FlowPane l2 = new FlowPane();
+        FlowPane l3 = new FlowPane();
+        
+        l1.setPrefWidth(100);
+        l2.setPrefWidth(100);
+        l3.setPrefWidth(100);
+        
+        PanelBatohu panelBatohu = new PanelBatohu(hra.getHerniPlan(),centerText);
+        Vychody vychody = new Vychody(hra.getHerniPlan(),centerText,zadejPrikazTextField);
+        PanelVeci panelVeci = new PanelVeci(hra.getHerniPlan(),centerText);
+
+        l1.getChildren().addAll(lBatoh,panelBatohu.getList());
+        l2.getChildren().addAll(lVychod,vychody.getList());
+        l3.getChildren().addAll(lVeci,panelVeci.getList());
+        
+        
+        levy.setTop(mapa);
+        levy.setCenter(l2);
+        levy.setLeft(l1);
+        levy.setRight(l3);
+        
         
         //panel prikaz
         borderPane.setBottom(dolniPanel);
         //obrazek s mapou
-        borderPane.setLeft(mapa);
+        borderPane.setLeft(levy);
         //menu adventury
         borderPane.setTop(menu);
         
 
-                //  TextoveRozhrani textoverozhrani = new TextoveRozhrani(hra);
-        // textoveRozhrani.hra();
-        // StackPane root = new StackPane();
-        // root.getChildren().add(btn);
-        Scene scene = new Scene(borderPane, 800, 650);
+        Scene scene = new Scene(borderPane, 1200, 870);
 
         primaryStage.setTitle("Moje adventura");
         primaryStage.setScene(scene);
@@ -139,10 +162,7 @@ public class Main extends Application {
     }
 
     public void novaHra() {
-        hra = new Hra();
-        centerText.setText(hra.vratUvitani());
-        //to same pro vsechny observery
-        mapa.novaHra(hra);
+        start(primaryStage);
     }
     
     public Stage getPrimaryStage() {

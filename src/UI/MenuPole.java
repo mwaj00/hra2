@@ -23,7 +23,7 @@ import main.Main;
 
 /**
  *
- * @author Julietta
+ * @author Julietta Mwansová
  */
 public class MenuPole extends MenuBar{
     

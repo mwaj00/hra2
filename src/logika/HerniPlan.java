@@ -24,6 +24,7 @@ public class HerniPlan implements Subject {
     private int pokus; //číslo pokusu
     private boolean isOtraveny; // zda je jídlo otrávené
     private boolean jedla; // zda princezna něco jedla
+    private Hra hra;
     
     private List<Observer> listObserveru = new ArrayList<>();
     
@@ -31,12 +32,12 @@ public class HerniPlan implements Subject {
      *  Konstruktor, který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví okraj lesa.
      */
-    public HerniPlan() {
+    public HerniPlan(Hra hra) {
         zalozProstoryHry();
         batoh = new Batoh();
         pokus = 0;
         isOtraveny = false;
-        
+        this.hra = hra;
         listObserveru = new ArrayList<>();
     }
     
@@ -47,24 +48,24 @@ public class HerniPlan implements Subject {
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
      
-        Prostor okrajLesa = new Prostor("okraj lesa","Tady jsi mela piknik a je to pro tebe zacatecni bod. Mas tri moznosti, kam se vydat",285,728 );
-        Prostor kukuricnePole = new Prostor("kukuricne pole", "V dali vidis strasidelny dum. Muzes jit pres\n"
-            + "hustym porostem kukuricce a jit k ni, anebo se vratit zpet na okraj lesa", 519, 575);
+        Prostor okrajLesa = new Prostor("okraj_lesa","Tady jsi mela piknik a je to pro tebe zacatecni bod. Mas tri moznosti, kam se vydat",230,350 );
+        Prostor kukuricnePole = new Prostor("kukuricne_pole", "V dali vidis strasidelny dum. Muzes jit pres\n"
+            + "hustym porostem kukuricce a jit k ni, anebo se vratit zpet na okraj lesa", 430,280);
         Prostor les = new Prostor("les","Cesta te vede tim dal tim vic do hlubin lesa a zacinas mit strach.\n"
-            + "Dal muzes jit po jejich hrbetu do udoli, nebo se vratit na okraj lesa",38,573);
+            + "Dal muzes jit po jejich hrbetu do udoli, nebo se vratit na okraj lesa",30,280);
         Prostor taboriste = new Prostor("taboriste","Vsimnes si stare pani, ktera povida: \"Pres taboriste cesta neni,\n"
             + "vrat se na okraj lesa.\" Muze si vsak lhat, proto se musis rozhodnout,\n"
-            + "zda ji poslechnes, nebo ne",273,579);
-        Prostor udoli = new Prostor("udoli","Nasla jsi ker plny boruvky. Muzes je sebrat a vlozit do batohu",267,452);
-        Prostor strasidelnyDum = new Prostor ("strasidelny dum", "Jsi vycerpana a mas hlad, posilni se!\n"
+            + "zda ji poslechnes, nebo ne",230,280);
+        Prostor udoli = new Prostor("udoli","Nasla jsi ker plny boruvky. Muzes je sebrat a vlozit do batohu",230,210);
+        Prostor strasidelnyDum = new Prostor ("strasidelny_dum", "Jsi vycerpana a mas hlad, posilni se!\n"
             +  "Na stole vidis jidlo: jablko, jahody a chleba. Nejdriv jidlo musis vlozit\n"
-            +  " do batohu, pak ho muzes snist",276,336);
+            +  " do batohu, pak ho muzes snist",230,140);
         Prostor jezero= new Prostor ("jezero", "Vysla jsi z strasidelneho domu a pred tebou je jezero. Musis ji preplavat.\n"
-            + "Hrozi, ze te silny proud vody strhne a utopis se. Risknes to?",274,217); 
+            + "Hrozi, ze te silny proud vody strhne a utopis se. Risknes to?",230,80); 
         Prostor hriste = new Prostor("hriste", "Preplaval jsi jezero. Jsi u detskeho hristi.\n"
             + "Nikdo tam neni krome jednoho bezdomovce. Usmeje se na tebe a rekne ti 'Asi hledas sveho brachu, reknu ti kde, jestli vyresis moji hadanku'.\n"
             + "Polozi ti otazku, na niz je jen jedna spravna odpoved. Odpovis-li spravne,\n"
-            + " rekne ti kde je tvuj bratr. Pokud ne, hra skonci. Mas tri pokusy. Otazka zni: 'Patří ti to, ale tvoji přátelé to používají víc než ty. Co je to'",274,50);
+            + " rekne ti kde je tvuj bratr. Pokud ne, hra skonci. Mas tri pokusy. Otazka zni: 'Patří ti to, ale tvoji přátelé to používají víc než ty. Co je to'",230,10);
              
         prohravaciProstor = strasidelnyDum;
         prohravaciProstor = hriste;
@@ -85,10 +86,10 @@ public class HerniPlan implements Subject {
         jezero.setVychod(hriste);
         
         //věci, které lze vložit do batohu        
-        udoli.vlozVec(new Vec("boruvky", true, "/zdroje/boruvky.png"));
-        strasidelnyDum.vlozVec(new Vec("jablko", true, "/zdroje/apple.png"));
-        strasidelnyDum.vlozVec(new Vec("jahody", true, "/zdroje/jahody.png"));
-        strasidelnyDum.vlozVec(new Vec("chleba", true, "/zdroje/chleba.png"));
+        udoli.vlozVec(new Vec("boruvky", true, "boruvky.png"));
+        strasidelnyDum.vlozVec(new Vec("jablko", true, "apple.png"));
+        strasidelnyDum.vlozVec(new Vec("jahody", true, "jahody.png"));
+        strasidelnyDum.vlozVec(new Vec("chleba", true, "chleba.png"));
         
         aktualniProstor = okrajLesa;  // hra začíná na rozcestí     
     }
@@ -106,6 +107,12 @@ public class HerniPlan implements Subject {
     public void setOtraveny(boolean b){
         isOtraveny = b;
     }
+
+    public Hra getHra() {
+        return hra;
+    }
+    
+    
     
     /**
      * Metoda rozhodne, zda princezna jedla

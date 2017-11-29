@@ -1,4 +1,9 @@
 package logika;
+
+import java.io.File;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 /**
  *  Třída PrikazJdi implementuje pro hru příkaz jdi.
  *  Tato třída je součástí jednoduché textové hry.
@@ -36,6 +41,10 @@ class PrikazJdi implements IPrikaz {
             return "Kam mam jit? Musis zadat jmeno vychodu.";
         }
 
+        Media sound = new Media(this.getClass().getResource("/zdroje/prichod.mp3").toString());
+        
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
         String smer = parametry[0];
 
         // zkoušíme přejít do sousedního prostoru
@@ -58,6 +67,7 @@ class PrikazJdi implements IPrikaz {
                 hra.setKonecHry(true);
                 return "Nemuzes jit k hristi. Zemrela jsi na otravu jablkem.";
             }
+            mediaPlayer.play();
             plan.setAktualniProstor(sousedniProstor);
             return sousedniProstor.dlouhyPopis();
         }

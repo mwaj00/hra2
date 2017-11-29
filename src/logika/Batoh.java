@@ -58,6 +58,12 @@ public class Batoh implements ISeznamVeci
         if(veci.containsKey(vec.getNazev())) return vec;
         return null;
     }
+
+    public Map<String, Vec> getVeci() {
+        return veci;
+    }
+    
+    
     
     /**
      * Metoda odebere věc z batohy.

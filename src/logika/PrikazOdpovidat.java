@@ -34,22 +34,33 @@ public class PrikazOdpovidat implements IPrikaz
             return "Musis zadat odpoved.";
         }
         if (parametry.length == 1) {
-            if(plan.getAktualniProstor().getNazev().equals("hriste") && plan.isOtraveny()) { 
+            if(plan.getAktualniProstor().getNazev().equals("hriste") && plan.isOtraveny()) 
+            { 
                 hra.setKonecHry(true);
-                return "Nemuzes odpovedet. Zemrela jsi na otravu jablkem.";
+                return "Nemuzes odpovedet. Zemrela jsi na otravu jablkem. - KONEC HRY";
             }
             
-            if(plan.getAktualniProstor().getNazev().equals("hriste")) { 
-                if((parametry[0].equals("jmeno") || parametry[0].equals("jméno")) 
-                && plan.getPokus() < 3){
-                    hra.setKonecHry(true);                    
-                    return "Spravne! Tvuj bratr hraje v pisku za velkym tresnem.";
-                } else { 
-                    plan.spatnaOdpoved();
-                    return "Spatna odpoved, muzes hadat jeste " + (3- plan.getPokus()) + "krat";
-                }
+            if(plan.getAktualniProstor().getNazev().equals("hriste")) 
+            { 
+                    if(plan.getPokus()>=2)
+                    {
+                            hra.setKonecHry(true);                    
+                            return "Došly ti pokusy - KONEC HRY";  
+                    }
+                
+                    if((parametry[0].equals("jmeno") || parametry[0].equals("jméno")))
+                    {
+                            hra.setKonecHry(true);                    
+                            return "Spravne! Tvuj bratr hraje v pisku za velkym tresnem.";
+                    }
+                    else 
+                    { 
+                            plan.spatnaOdpoved();
+                            return "Spatna odpoved, muzes hadat jeste " + (2 - plan.getPokus()) + "krat";
+                    }
             }
-            else {
+            else 
+            {
                 //pokud se příkaz odpovidat zadá v jiném prostoru než hriste tak...
                 return "Tady nemas komu odpovedet."; 
             }
