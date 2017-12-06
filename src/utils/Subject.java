@@ -11,9 +11,20 @@ package utils;
  */
 public interface Subject {
    
+    /**
+     *
+     * @param observer najit observer
+     */
     void registerObserver(Observer observer);
     
+    /**
+     *
+     * @param observer smazat observer
+     */
     void deleteObserver (Observer observer);
     
+    /**
+     *update
+     */
     void notifyAllObservers();
 }

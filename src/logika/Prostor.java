@@ -35,6 +35,8 @@ public class Prostor {
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
+     * @param posX pozice x
+     * @param posY pozice Y
      */
     public Prostor(String nazev, String popis, double posX, double posY) {
         this.nazev = nazev;
@@ -97,6 +99,7 @@ public class Prostor {
      * prekryti metody equals je potreba prekryt i metodu hashCode. Podrobny
      * popis pravidel pro vytvareni metody hashCode je u metody hashCode ve
      * tride Object
+     * @return ciselny identifikator instance
      */
     @Override
     public int hashCode() {
@@ -179,12 +182,19 @@ public class Prostor {
         return Collections.unmodifiableCollection(vychody);
     }
 
+    /**
+     *
+     * @param nazev veci
+     * @return vec
+     */
     public boolean obsahujeVec(String nazev) {
         return veci.containsKey(nazev);
     }
 
     /**
      * Metoda vloží věc do prostoru.
+     * @param vec nazev veci vlozi do batohu
+     * @return vraci obsah
      */
     public Vec vlozVec(Vec vec) {
         veci.put(vec.getNazev(),vec);
@@ -196,6 +206,8 @@ public class Prostor {
 
     /**
      * Metoda odebere věc z prostoru.
+     * @param nazev vec
+     * @return vraci vec z batohu
      */
     public Vec odeberVec(String nazev) {
         return veci.remove(nazev); 
@@ -203,11 +215,17 @@ public class Prostor {
 
     /**
      * Metoda vrátí "nic" při odebrání z prostoru.
+     * @param vec vec
+     * @return odebrani vec
      */
     public Vec odeberVec(Vec vec) {
         return null;
     }
     
+    /**
+     *
+     * @return seznam veci
+     */
     public String seznamVychoduProPanely() 
     {
         String vracenyText = "vychody:";
@@ -217,6 +235,10 @@ public class Prostor {
         return vracenyText;
     }
     
+    /**
+     *
+     * @return vec
+     */
     public Map<String,Vec> getVeci()
      {
          return this.veci;
@@ -225,6 +247,8 @@ public class Prostor {
 
     /**
      * Metoda vrací hodnotu odpovídající zadanému klíči.
+     * @param nazev vec
+     * @return hodnotu odpovídající zadanému klíči
      */
     public Vec vratVec(String nazev){
         return veci.get(nazev);
@@ -232,6 +256,8 @@ public class Prostor {
 
     /**
      * Metoda vrátí "nic", je-li věc odebraná z prostoru.
+     * @param vec vec 
+     * @return "nic", je-li věc odebraná z prostoru.
      */
     public Vec odebranaVec(Vec vec) {
         return null;
@@ -239,6 +265,8 @@ public class Prostor {
 
     /**
      * Metoda umožní sníst věc.
+     * @param vec vec 
+     * @return umožní sníst věc
      */
     public Vec snezVec(Vec vec) {
         veci.put(vec.getNazev(),vec);
@@ -248,7 +276,11 @@ public class Prostor {
         return null;
     }
     
-     public double getPosX() {
+    /**
+     *
+     * @return pozice X
+     */
+    public double getPosX() {
         return posX;
     }
 

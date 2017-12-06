@@ -24,6 +24,10 @@ public class Mapa extends AnchorPane implements Observer{
     //private Circle tecka;
     private ImageView tecka;
     
+    /**
+     *
+     * @param hra hleda hru
+     */
     public Mapa(IHra hra){
         this.hra = hra;
         hra.getHerniPlan().registerObserver(this);

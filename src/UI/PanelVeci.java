@@ -36,7 +36,8 @@ public class PanelVeci implements Observer{
     /**
      * konstruktur
      *
-     * @param plan
+     * @param plan najit hry
+     * @param text najit text
      */
     
     
@@ -103,6 +104,12 @@ public class PanelVeci implements Observer{
     /*
     * Metoda vrací list.
     */
+
+    /**
+     *
+     * @return list
+     */
+
     public ListView<Object> getList() {
         return list;
     }
@@ -127,7 +134,7 @@ public class PanelVeci implements Observer{
     
     /**
      * Metoda zaregistruje pozorovatele k hernímu plánu při spuštění nové hry.
-     * @param plan
+     * @param plan zaregistruje pozorovatele k hernímu plánu při spuštění nové hry
      */
     public void nastaveniHernihoPlanu (HerniPlan plan){
         this.plan = plan;

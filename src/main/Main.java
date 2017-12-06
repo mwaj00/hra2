@@ -37,6 +37,10 @@ import uiText.TextoveRozhrani;
 import javafx.scene.text.FontWeight;
 import uiText.TextoveRozhrani;
 
+/**
+ *
+ * @author Julietta
+ */
 public class Main extends Application {
 
     private MenuPole menu;
@@ -45,6 +49,10 @@ public class Main extends Application {
     private Stage primaryStage;
     private Mapa mapa;
     
+    /**
+     *
+     * @param primaryStage zakladni nastaveni hry
+     */
     @Override
     public void start(Stage primaryStage) {
         
@@ -161,10 +169,17 @@ public class Main extends Application {
         }
     }
 
+    /**
+     *nova hra
+     */
     public void novaHra() {
         start(primaryStage);
     }
     
+    /**
+     *
+     * @return list
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }

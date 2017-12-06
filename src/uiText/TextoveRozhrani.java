@@ -23,6 +23,7 @@ public class TextoveRozhrani {
 
     /**
      *  Vytváří hru.
+     * @param hra najit hru
      */
     public TextoveRozhrani(IHra hra) {
         hra = new Hra();
@@ -51,6 +52,7 @@ public class TextoveRozhrani {
     /**
      * Metoda umoznuje spustit hru s prikazy z textoveho souboru.
      *
+     * @param nazevSouboru vyhleda soubor a umoznuje spustit hru s prikazy z textoveho souboru.
      */
     public void hrajZeSouboru(String nazevSouboru) {
                 

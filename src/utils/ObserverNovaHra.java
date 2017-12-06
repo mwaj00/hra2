@@ -13,6 +13,10 @@ import logika.IHra;
  */
 public interface ObserverNovaHra {
     
+    /**
+     *
+     * @param hra pustit nova hra
+     */
     void novaHra(IHra hra);
     
 }

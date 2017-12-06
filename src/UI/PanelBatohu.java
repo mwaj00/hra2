@@ -34,7 +34,8 @@ public class PanelBatohu implements Observer{
     /**
      * konstruktur
      *
-     * @param plan
+     * @param plan hru
+     * @param text umisteni textu
      */
     
     public PanelBatohu(HerniPlan plan,TextArea text) {
@@ -60,8 +61,10 @@ public class PanelBatohu implements Observer{
             @Override
             public void handle(MouseEvent click)
             {
+                //kolik kr8t kliknout
                 if (click.getClickCount() == 2) 
                 {
+                    // cislo policka
                     int index = list.getSelectionModel().getSelectedIndex();
                     
                     Map<String, Vec> seznam;
@@ -84,7 +87,7 @@ public class PanelBatohu implements Observer{
                 
                     centralText.appendText("\n" + vstupniPrikaz + "\n");
                     centralText.appendText("\n" + odpovedHry + "\n");
-               
+               //nacte se to znovu-odebrani z batohu
                     plan.notifyAllObservers();
                 }
             }
@@ -98,6 +101,12 @@ public class PanelBatohu implements Observer{
     /*
     * Metoda vrací list.
     */
+
+    /**
+     *
+     * @return vraci list
+     */
+
     public ListView<Object> getList() {
         return list;
     }
@@ -121,7 +130,7 @@ public class PanelBatohu implements Observer{
     
     /**
      * Metoda zaregistruje pozorovatele k hernímu plánu při spuštění nové hry.
-     * @param plan
+     * @param plan zaregistruje pozorovatele k hernímu plánu při spuštění nové hry
      */
     public void nastaveniHernihoPlanu (HerniPlan plan){
         this.plan = plan;

@@ -18,6 +18,9 @@ public class Vec
     private Map<String, Vec> veci; //klíč a k němu přiřazená hodnota
     /***************************************************************************
      * Konstuktor třídy
+     * @param nazev nazev vec
+     * @param prenositelnost jestli muzeme vzit vec
+     * @param url string url
      */
     public Vec(String nazev, boolean prenositelnost, String url)
     {
@@ -29,6 +32,7 @@ public class Vec
 
     /**
      * Metoda vrací název věci
+     * @return název věci
      */ 
     public String getNazev() {
         return nazev;
@@ -36,6 +40,8 @@ public class Vec
     
     /**
      * Metoda vloží věc do batohu.
+     * @param vec vec
+     * @return vec ktery je v batohu
      */
     public Vec vlozVec(Vec vec) {
         veci.put(vec.getNazev(),vec); //vloží klíč a hodnotu do mapy
@@ -45,15 +51,25 @@ public class Vec
     
      /**
      * Metoda rozhodne, zda v batohu věc je.
+     * @param nazev vec
+     * @return jestli vec je v batohu
      */
     public boolean obsahujeVec(String nazev) {
         return veci.containsKey(nazev); //pokud je klíč obsažen v mapě, vrací true
     }
     
+    /**
+     *
+     * @return jestli vec je odebrana
+     */
     public String odebranaVec(){
         return null;
     }
     
+    /**
+     *
+     * @return jestli vec je prenositelna
+     */
     public boolean jePrenositelna(){
         return prenositelnost;
     }

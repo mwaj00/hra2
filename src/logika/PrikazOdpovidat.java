@@ -16,6 +16,7 @@ public class PrikazOdpovidat implements IPrikaz
      *  Konstruktor třídy
      *  
      * @param plan herní plán, ve kterém se bude ve hře "odpovídat" 
+     * @param hra hra 
      */ 
     public PrikazOdpovidat(HerniPlan plan, Hra hra)
     {
@@ -71,7 +72,7 @@ public class PrikazOdpovidat implements IPrikaz
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  
-     *  @ return nazev prikazu
+     *  @return nazev prikazu
      */
     public String getNazev() {
         return NAZEV;

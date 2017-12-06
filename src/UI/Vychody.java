@@ -37,6 +37,8 @@ public class Vychody implements Observer
      * u herního plánu
      *
      * @param plan herní plán
+     * @param text hry
+     * @param field hriste
      */
     
     public Vychody(HerniPlan plan, TextArea text,TextField field)
@@ -90,6 +92,10 @@ public class Vychody implements Observer
         update();
       }
 
+    /**
+     *
+     * @return list
+     */
     public ListView<String> getList()
       {
         return list;
@@ -112,7 +118,7 @@ public class Vychody implements Observer
     
     /**
      * Metoda zaregistruje pozorovatele k hernímu plánu při spuštění nové hry.
-     * @param plan
+     * @param plan zaregistruje pozorovatele k hernímu plánu při spuštění nové hry
      */
     public void nastaveniHernihoPlanu (HerniPlan plan){
         this.plan = plan;

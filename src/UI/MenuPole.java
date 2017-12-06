@@ -29,6 +29,10 @@ public class MenuPole extends MenuBar{
     
 private Main main;
     
+    /**
+     *
+     * @param main vyvola main tridu
+     */
     public MenuPole(Main main){
         this.main = main;
         init();

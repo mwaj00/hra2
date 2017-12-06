@@ -45,6 +45,8 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda rozhodne, zda v batohu věc je.
+     * @param nazev vec
+     * @return vec jestli je v batohu
      */
     public boolean obsahujeVec(String nazev) {
         return veci.containsKey(nazev); //pokud je klíč obsažen v mapě, vrací true
@@ -52,6 +54,8 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda vloží věc do batohu.
+     * @param vec vec
+     * @return vec jestli je v batohu
      */
     public Vec vlozVec(Vec vec) {
         veci.put(vec.getNazev(),vec); //vloží klíč a hodnotu do mapy
@@ -59,6 +63,10 @@ public class Batoh implements ISeznamVeci
         return null;
     }
 
+    /**
+     *
+     * @return vec
+     */
     public Map<String, Vec> getVeci() {
         return veci;
     }
@@ -67,6 +75,8 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda odebere věc z batohy.
+     * @param nazev vec
+     * @return  odebrani vec
      */
     public Vec odeberVec(String nazev) {
         return veci.remove(nazev); //v mapě se zrusí odpovídající klíč s hodnotou
@@ -74,6 +84,8 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda odebere věc z batohy.
+     * @param vec vec
+     * @return  odebrani vec
      */
     public Vec odeberVec(Vec vec) {
         return null;
@@ -81,6 +93,8 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda vrátí "nic", byla-li věc snězena
+     * @param vec vec 
+     * @return "nic", byla-li věc snězena
      */
     public Vec snezVec(Vec vec) {
         return null;
@@ -88,6 +102,8 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda vrátí "nic", byla-li věc odebrána z batohy.
+     * @param vec vec
+     * @return vrátí "nic", byla-li věc odebrána z batohy
      */
     public Vec odebranaVec(Vec vec) {
         return null;
@@ -95,6 +111,7 @@ public class Batoh implements ISeznamVeci
     
     /**
      * Metoda vrací kapacitu batohy.
+     * @return vrací kapacitu batohy
      */
     public int getKapacita() {
         return KAPACITA;

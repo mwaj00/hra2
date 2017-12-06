@@ -12,5 +12,8 @@ package utils;
 
 public interface Observer {
     
+    /**
+     *update
+     */
     void update();
 }

@@ -31,6 +31,7 @@ public class HerniPlan implements Subject {
     /**
      *  Konstruktor, který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví okraj lesa.
+     * @param hra vytváří jednotlivé prostory a propojuje je pomocí východů.
      */
     public HerniPlan(Hra hra) {
         zalozProstoryHry();
@@ -96,6 +97,7 @@ public class HerniPlan implements Subject {
 
     /**
      * Metoda rozhodne, zda je jídlo otrávené
+     * @return otraveny
      */
     public boolean isOtraveny(){
         return isOtraveny;
@@ -103,11 +105,16 @@ public class HerniPlan implements Subject {
     
     /**
      * Metoda nastavuje, která jídla jdou otrávená
+     * @param b najit otraveny
      */
     public void setOtraveny(boolean b){
         isOtraveny = b;
     }
 
+    /**
+     *
+     * @return hru
+     */
     public Hra getHra() {
         return hra;
     }
@@ -116,6 +123,7 @@ public class HerniPlan implements Subject {
     
     /**
      * Metoda rozhodne, zda princezna jedla
+     * @return  ze jedla jidlo
      */
     public boolean jedlaJidlo(){
         return jedla;
@@ -123,6 +131,7 @@ public class HerniPlan implements Subject {
 
     /**
      * Metoda nastavuje, že princezna jedla
+     * @param j je pro jidlo
      */
     public void setJedla(boolean j){
         jedla = j;
@@ -150,6 +159,7 @@ public class HerniPlan implements Subject {
     
     /**
      * Metoda vrací počet zbývajících pokusů při odpovídání na otázku
+     * @return pokus
      */
     public int getPokus(){
         return pokus;
@@ -164,6 +174,7 @@ public class HerniPlan implements Subject {
        
     /**
      * Metoda vrací vítězný prostor.
+     * @return  vitezny prostor
      */
     public Prostor getViteznyProstor() {
         return viteznyProstor;
@@ -171,6 +182,7 @@ public class HerniPlan implements Subject {
     
     /**
      * Metoda vrací prohrávací prostor.
+     * @return prohravaci prostor
      */
     public Prostor getProhravaciProstor() {
         return prohravaciProstor;
@@ -178,21 +190,33 @@ public class HerniPlan implements Subject {
 
     /**
      * Metoda vrací obsah kabelky.
+     * @return batoh
      */
     public Batoh getBatoh() {
         return batoh;
     }
 
+    /**
+     *
+     * @param observer list
+     */
     @Override
     public void registerObserver(Observer observer) {
         listObserveru.add(observer);
     }
 
+    /**
+     *
+     * @param observer smazat list
+     */
     @Override
     public void deleteObserver(Observer observer) {
         listObserveru.remove(observer);
     }
 
+    /**
+     *update
+     */
     @Override
     public void notifyAllObservers() {
         for (Observer listObserveruItem : listObserveru) {

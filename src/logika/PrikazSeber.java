@@ -27,6 +27,7 @@ public class PrikazSeber implements IPrikaz
 
     /**
      * Provádí příkaz seber. Zkouší sebrat věci z prostoru a vkládá je do batohu.
+     * @return sebrane veci z prostoru
      */
     @Override
     public String proved(String... parametry) {
@@ -54,7 +55,7 @@ public class PrikazSeber implements IPrikaz
      /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  
-     *  @ return nazev prikazu
+     *  @return nazev prikazu - slovo které používá hráč pro jeho vyvolání
      */
     public String getNazev() {
         return NAZEV;

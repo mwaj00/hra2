@@ -24,7 +24,11 @@ public class OknoNapovedy {
 
     private URL umisteniSouboru;
     
-     public OknoNapovedy(String soubor) {
+    /**
+     *
+     * @param soubor je umisteni soubor s napovedou
+     */
+    public OknoNapovedy(String soubor) {
 
         umisteniSouboru = this.getClass().getResource(soubor);
 
@@ -50,7 +54,11 @@ public class OknoNapovedy {
         oknoNapovedyDialog.setSize(400, 600);
     }
     
-     public void setVisible(boolean viditelnost) {
+    /**
+     *
+     * @param viditelnost ukazuje jestli je napoveda viditelna
+     */
+    public void setVisible(boolean viditelnost) {
         oknoNapovedyDialog.setVisible(viditelnost);
     }
 }

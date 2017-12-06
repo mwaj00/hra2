@@ -27,6 +27,7 @@ public class PrikazJez implements IPrikaz
 
     /**
      * Provádí příkaz jez. Zkouší sníst věci, které jsou už vložené v batohu.
+     * @return snezene věci, které jsou už vložené v batohu
      */
     @Override
     public String proved(String... parametry) {
@@ -55,7 +56,7 @@ public class PrikazJez implements IPrikaz
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  
-     *  @ return nazev prikazu
+     *  @return nazev prikazu
      */
     public String getNazev() {
         return NAZEV;
@@ -91,6 +92,7 @@ public class PrikazJez implements IPrikaz
 
      /**
      * Metoda zajišťuje, že věc (jablko) lze sníst pouze pokud je již v batohu; "nastaví", že sestra se už najedla..
+     * @return věc (jablko) lze sníst pouze pokud je již v batohu; "nastaví", že sestra se už najedla
      */
     public String jablko(){
         if(plan.getBatoh().obsahujeVec("jablko")){
@@ -107,6 +109,7 @@ public class PrikazJez implements IPrikaz
      /**
      * Metoda zajišťuje, že věc (borůvky) lze sníst pouze pokud je již v batohu.
      * Pokud je snězeneno otrávené jídlo, musí se sníst borůvky. Jde ji však snízt i v případě, že nebylo požito jablko.
+     * @return věc (borůvky) lze sníst pouze pokud je již v batohu
      */
     public String boruvky(){
         if(plan.getBatoh().obsahujeVec("boruvky"))
